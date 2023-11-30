@@ -162,7 +162,7 @@ def weather(canvas, temp_x, temp_y, hum_x, hum_y, wind_x, wind_y, weather_x, wea
     # Resize image
     icon_width = 75
     icon_height = 75
-    icon = icon.resize((icon_width, icon_height), Image.LANCZOS)
+    icon = icon.resize((icon_width, icon_height), Image.LANCZOS) #NOTE: This may cause the pixelated photo, check lines 163 - 167 
 
     icon = ImageTk.PhotoImage(icon) # Creates image
 
