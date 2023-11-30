@@ -1,8 +1,8 @@
 # Imports
 import tkinter as tk
-from GUIdatetime import *
-from GUIweather import *
-#from TEST import *
+from widgets import GUIdatetime as dt
+from widgets import GUIweather as wt
+
 
 # Functions
 def dashboard_base():
@@ -48,22 +48,22 @@ def dashboard_base():
     ########## Widgets ##########
 
     # Datetime widgets
-    datetime_widget(canvas, 132.5, 40) # Creates Time, Day, and Date in top left of GUI, updates every second 
-    days_widget(canvas, 1, 71.25, 173) # Creates day + 1, top left of GUI, updates every second
-    days_widget(canvas, 2, 193.75, 173) # Creates day + 2, top left of GUI, updates every second
-    days_widget(canvas, 3, 71.25, 287.5) # Creates day + 3, top left of GUI, updates every second
-    days_widget(canvas, 4, 193.75, 287.5) # Creates day + 4, top left of GUI, updates every second
-    days_widget(canvas, 1, 727, 26.5) # Creates day + 1, top right of GUI, updates every second 
-    days_widget(canvas, 2, 727, 121.5) # Creates day + 2, middle right of GUI, updates every second 
-    days_widget(canvas, 3, 727, 216.5) # Creates day + 3, middle right of GUI, updates every second 
-    days_widget(canvas, 4, 727, 311.5) # Creates day + 4, bottom right of GUI, updates every second 
-    time_widget(canvas, 0, 309, 52.5) # Creates time + 0, top middle of GUI, updates every second
-    time_widget(canvas, 1, 309, 150.5) # Creates time + 1, top middle of GUI, updates every second
-    time_widget(canvas, 2, 309, 245.5) # Creates time + 2, top middle of GUI, updates every second
-    time_widget(canvas, 3, 309, 340.5) # Creates time + 2, top middle of GUI, updates every second
+    dt.datetime_widget(canvas, 132.5, 40) # Creates Time, Day, and Date in top left of GUI, updates every second 
+    dt.days_widget(canvas, 1, 71.25, 173) # Creates day + 1, top left of GUI, updates every second
+    dt.days_widget(canvas, 2, 193.75, 173) # Creates day + 2, top left of GUI, updates every second
+    dt.days_widget(canvas, 3, 71.25, 287.5) # Creates day + 3, top left of GUI, updates every second
+    dt.days_widget(canvas, 4, 193.75, 287.5) # Creates day + 4, top left of GUI, updates every second
+    dt.days_widget(canvas, 1, 727, 26.5) # Creates day + 1, top right of GUI, updates every second 
+    dt.days_widget(canvas, 2, 727, 121.5) # Creates day + 2, middle right of GUI, updates every second 
+    dt.days_widget(canvas, 3, 727, 216.5) # Creates day + 3, middle right of GUI, updates every second 
+    dt.days_widget(canvas, 4, 727, 311.5) # Creates day + 4, bottom right of GUI, updates every second 
+    dt.time_widget(canvas, 0, 309, 52.5) # Creates time + 0, top middle of GUI, updates every second
+    dt.time_widget(canvas, 1, 309, 150.5) # Creates time + 1, top middle of GUI, updates every second
+    dt.time_widget(canvas, 2, 309, 245.5) # Creates time + 2, top middle of GUI, updates every second
+    dt.time_widget(canvas, 3, 309, 340.5) # Creates time + 2, top middle of GUI, updates every second
 
     # Weather widgets
-    weather(canvas, 10, 73, 198, 85.5, 198, 112, 153.5, 112) # Creates widgets for realtime weather
+    wt.weather(canvas, 10, 73, 198, 85.5, 198, 112, 153.5, 112) # Creates widgets for realtime weather
 
     #############################
 
