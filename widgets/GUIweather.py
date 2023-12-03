@@ -76,9 +76,12 @@ def request_forecast():
     forecast_tempmin = [] # Empty list for temp mins in the forecast
     
     for day in forecast_data: # For loop through the 5 days in the forecast and 
-        forecast_weathercode.append(day.get("values", {}).get("weatherCodeMax", "N/A"))
-        forecast_tempmax.append(day.get("values", {}).get("temperatureMax", "N/A"))
-        forecast_tempmin.append(day.get("values", {}).get("temperatureMin", "N/A"))
+        weathercode = day.get("values", {}).get("weatherCodeMax", "N/A")
+        tempmax = round(day.get("values", {}).get("temperatureMax", "N/A"),None)
+        tempmin = round(day.get("values", {}).get("temperatureMin", "N/A"),None)
+        forecast_weathercode.append(weathercode)
+        forecast_tempmax.append(tempmax)
+        forecast_tempmin.append(tempmin)
 
     # Return a dictionary for modularly calling on values when creating widgets in GUI
     return {
@@ -396,6 +399,7 @@ def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2
     ###########################
 
     # Update API Data
+    update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label)
 
     return icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label
 
@@ -416,7 +420,7 @@ def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_lab
     temp_4_label.config(text=f"{weather_data['forecast min temp'][3]}˚    {weather_data['forecast max temp'][3]}")
 
     # Convert new weather code into icon DAY 1
-    icon_1_path = weather_icons(weather_data['weather'][0])
+    icon_1_path = weather_icons(weather_data['forecast weather'][0])
     new_icon_1 = Image.open(icon_1_path)
     new_icon_1 = new_icon_1.resize((65, 65), Image.BICUBIC)
     new_icon_1 = ImageTk.PhotoImage(new_icon_1)
@@ -426,7 +430,7 @@ def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_lab
     icon_1_label.image = new_icon_1  # Keep a reference to avoid garbage collection
 
     # Convert new weather code into icon DAY 2
-    icon_2_path = weather_icons(weather_data['weather'][1])
+    icon_2_path = weather_icons(weather_data['forecast weather'][1])
     new_icon_2 = Image.open(icon_2_path)
     new_icon_2 = new_icon_2.resize((65, 65), Image.BICUBIC)
     new_icon_2 = ImageTk.PhotoImage(new_icon_2)
@@ -436,7 +440,7 @@ def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_lab
     icon_2_label.image = new_icon_2  # Keep a reference to avoid garbage collection
 
     # Convert new weather code into icon DAY 3
-    icon_3_path = weather_icons(weather_data['weather'][2])
+    icon_3_path = weather_icons(weather_data['forecast weather'][2])
     new_icon_3 = Image.open(icon_3_path)
     new_icon_3 = new_icon_3.resize((65, 65), Image.BICUBIC)
     new_icon_3 = ImageTk.PhotoImage(new_icon_3)
@@ -446,9 +450,9 @@ def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_lab
     icon_3_label.image = new_icon_3  # Keep a reference to avoid garbage collection
 
     # Convert new weather code into icon DAY 4
-    icon_4_path = weather_icons(weather_data['weather'][3])
+    icon_4_path = weather_icons(weather_data['forecast weather'][3])
     new_icon_4 = Image.open(icon_4_path)
-    new_icon_4 = new_icon_1.resize((65, 65), Image.BICUBIC)
+    new_icon_4 = new_icon_4.resize((65, 65), Image.BICUBIC)
     new_icon_4 = ImageTk.PhotoImage(new_icon_4)
 
     # Update the icon label with the new icon
@@ -457,4 +461,3 @@ def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_lab
 
     # Return the updated labels and icon
     return canvas.after(300000, update_weather, canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label)
-
