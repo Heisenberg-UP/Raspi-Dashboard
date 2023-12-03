@@ -272,7 +272,7 @@ def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2
 
     # Temp
     # Label text and icons and locations
-    temp_1_label = tk.Label(canvas, text=f"{mintemp[0]}˚    {maxtemp[0]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+    temp_1_label = tk.Label(canvas, text=f"{mintemp[0]}˚    {maxtemp[0]}˚", font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF")
 
     temp_1_width = temp_1_label.winfo_reqwidth() # Collects widget width
     temp_1_height = temp_1_label.winfo_reqheight() # Collects widget height
@@ -309,7 +309,7 @@ def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2
 
     # Temp
     # Label text and icons and locations
-    temp_2_label = tk.Label(canvas, text=f"{mintemp[1]}˚    {maxtemp[1]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+    temp_2_label = tk.Label(canvas, text=f"{mintemp[1]}˚    {maxtemp[1]}˚", font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF")
 
     temp_2_width = temp_2_label.winfo_reqwidth() # Collects widget width
     temp_2_height = temp_2_label.winfo_reqheight() # Collects widget height
@@ -346,7 +346,7 @@ def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2
 
     # Temp
     # Label text and icons and locations
-    temp_3_label = tk.Label(canvas, text=f"{mintemp[2]}˚    {maxtemp[2]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+    temp_3_label = tk.Label(canvas, text=f"{mintemp[2]}˚    {maxtemp[2]}˚", font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF")
 
     temp_3_width = temp_3_label.winfo_reqwidth() # Collects widget width
     temp_3_height = temp_3_label.winfo_reqheight() # Collects widget height
@@ -383,7 +383,7 @@ def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2
 
     # Temp
     # Label text and icons and locations
-    temp_4_label = tk.Label(canvas, text=f"{mintemp[3]}˚    {maxtemp[3]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+    temp_4_label = tk.Label(canvas, text=f"{mintemp[3]}˚    {maxtemp[3]}˚", font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF")
 
     temp_4_width = temp_4_label.winfo_reqwidth() # Collects widget width
     temp_4_height = temp_4_label.winfo_reqheight() # Collects widget height
