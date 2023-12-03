@@ -64,7 +64,8 @@ def dashboard_base():
 
     # Weather widgets
     wt.weather(canvas, 10, 73, 198, 85.5, 198, 112, 153.5, 112) # Creates widgets for realtime weather
-
+    #wt.forecast(canvas, 2000, 2000, 250, 250, 3000, 3000, 350, 350, 4000, 2000, 400, 100, 5000, 2000, 500, 200)
+    
     #############################
 
     # Event loop
