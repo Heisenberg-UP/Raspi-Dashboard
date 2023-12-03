@@ -126,12 +126,14 @@ def weather_icons(weathercode):
     }
 
 # Assign image for weather
-    #icon_code = [weatherCode.get(str(i), "N/A") for i in weathercode] # Retreives weather icons for forecast weather code
-    icon_code = weatherCode.get(f"{weathercode}", "N/A")
-
-    # Assign directory for images
-    #icon = [image_path + i for i in icon_code]
-    icon = image_path + icon_code
+    if type(weathercode) == list:
+        icon_code = [weatherCode.get(f"{i}", "N/A") for i in weathercode] # Retreives weather icons for forecast weather code
+        # Assign directory for images
+        icon = [image_path + i for i in icon_code]
+    else:
+        icon_code = weatherCode.get(f"{weathercode}", "N/A")
+        # Assign directory for images
+        icon = image_path + icon_code
 
     return icon
 
@@ -162,7 +164,7 @@ def weather(canvas, temp_x, temp_y, hum_x, hum_y, wind_x, wind_y, weather_x, wea
     # Resize image
     icon_width = 75
     icon_height = 75
-    icon = icon.resize((icon_width, icon_height), Image.LANCZOS) #NOTE: This may cause the pixelated photo, check lines 163 - 167 
+    icon = icon.resize((icon_width, icon_height), Image.BICUBIC)
 
     icon = ImageTk.PhotoImage(icon) # Creates image
 
@@ -213,7 +215,7 @@ def update_weather(canvas, temp_label, humidity_label, windspeed_label, icon_lab
     # Convert new weather code into icon
     icon_path = weather_icons(weather_data['weather'])
     new_icon = Image.open(icon_path)
-    new_icon = new_icon.resize((75, 75), Image.LANCZOS)
+    new_icon = new_icon.resize((75, 75), Image.BICUBIC)
     new_icon = ImageTk.PhotoImage(new_icon)
 
     # Update the icon label with the new icon
@@ -224,5 +226,235 @@ def update_weather(canvas, temp_label, humidity_label, windspeed_label, icon_lab
     return canvas.after(300000, update_weather, canvas, temp_label, humidity_label, windspeed_label, icon_label)
 
 
-#def forecast(canvas, tom_x, tom_y, tom1_x, tom1_y, tom2_x, tom2_y, tom3_x, tom3_y):
+def forecast(canvas, temp1_x, temp1_y, icon1_x, icon1_y, temp2_x, temp2_y, icon2_x, icon2_y, temp3_x, temp3_y, icon3_x, icon3_y, 
+             temp4_x, temp4_y, icon4_x, icon4_y):
+
+    """
+    Function will create widget for one of the four forecasted days:
+    - Max temp forecast
+    - Min temp forecast
+    - Weather icon forecast
+    """
+
+    # Run API function
+    forecast_data = request_forecast()
+
+    # Create variables for API data
+    # Day 1
+    maxtemp = forecast_data["forecast max temp"]
+    mintemp = forecast_data["forecast min temp"]
+    icon = forecast_data["forecast weather"]
+
+    icons = weather_icons(icon)
+
+    ########## DAY 1 ##########
+    
+    # Icon 
+    icon_1 = Image.open(icons[0]) # Opens .png file 
+
+    # Resize image
+    icon_1_width = 65
+    icon_1_height = 65
+    icon_1 = icon_1.resize((icon_1_width, icon_1_height), Image.BICUBIC)
+
+    icon_1 = ImageTk.PhotoImage(icon_1) # Creates image
+
+    # Label text and icons and locations
+    icon_1_label = tk.Label(canvas, image=icon_1, bg="#1E1E1E")
+
+    icon_1_width = icon_1_label.winfo_reqwidth() # Collects widget width
+    icon_1_height = icon_1_label.winfo_reqheight() # Collects widget height
+
+    icon_1_x_centered = icon1_x - icon_1_width/2 # Centers x value
+    icon_1_y_centered = icon1_y - icon_1_height/2 # Centers y value 
+
+    icon_1_label.place(x=icon_1_x_centered, y=icon_1_y_centered) # Location of widget
+
+    # Temp
+    # Label text and icons and locations
+    temp_1_label = tk.Label(canvas, text=f"{mintemp[0]}˚    {maxtemp[0]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+
+    temp_1_width = temp_1_label.winfo_reqwidth() # Collects widget width
+    temp_1_height = temp_1_label.winfo_reqheight() # Collects widget height
+
+    temp_1_x_centered = temp1_x - temp_1_width/2 # Centers x value
+    temp_1_y_centered = temp1_y - temp_1_height/2 # Centers y value
+
+    temp_1_label.place(x=temp_1_x_centered, y=temp_1_y_centered)
+
+    ###########################
+
+    ########## DAY 2 ##########
+
+    # Icon 
+    icon_2 = Image.open(icons[1]) # Opens .png file
+
+    # Resize image
+    icon_2_width = 65
+    icon_2_height = 65
+    icon_2 = icon_2.resize((icon_2_width, icon_2_height), Image.BICUBIC)
+
+    icon_2 = ImageTk.PhotoImage(icon_2) # Creates image
+
+    # Label text and icons and locations
+    icon_2_label = tk.Label(canvas, image=icon_2, bg="#1E1E1E")
+
+    icon_2_width = icon_2_label.winfo_reqwidth() # Collects widget width
+    icon_2_height = icon_2_label.winfo_reqheight() # Collects widget height
+
+    icon_2_x_centered = icon2_x - icon_2_width/2 # Centers x value
+    icon_2_y_centered = icon2_y - icon_2_height/2 # Centers y value 
+
+    icon_2_label.place(x=icon_2_x_centered, y=icon_2_y_centered) # Location of widget
+
+    # Temp
+    # Label text and icons and locations
+    temp_2_label = tk.Label(canvas, text=f"{mintemp[1]}˚    {maxtemp[1]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+
+    temp_2_width = temp_2_label.winfo_reqwidth() # Collects widget width
+    temp_2_height = temp_2_label.winfo_reqheight() # Collects widget height
+
+    temp_2_x_centered = temp2_x - temp_2_width/2 # Centers x value
+    temp_2_y_centered = temp2_y - temp_2_height/2 # Centers y value
+
+    temp_2_label.place(x=temp_2_x_centered, y=temp_2_y_centered)
+
+    ###########################
+
+    ########## DAY 3 ##########
+    
+    # Icon 
+    icon_3 = Image.open(icons[2]) # Opens .png file
+
+    # Resize image
+    icon_3_width = 65
+    icon_3_height = 65
+    icon_3 = icon_3.resize((icon_3_width, icon_3_height), Image.BICUBIC)
+
+    icon_3 = ImageTk.PhotoImage(icon_3) # Creates image
+
+    # Label text and icons and locations
+    icon_3_label = tk.Label(canvas, image=icon_3, bg="#1E1E1E")
+
+    icon_3_width = icon_3_label.winfo_reqwidth() # Collects widget width
+    icon_3_height = icon_3_label.winfo_reqheight() # Collects widget height
+
+    icon_3_x_centered = icon3_x - icon_3_width/2 # Centers x value
+    icon_3_y_centered = icon3_y - icon_3_height/2 # Centers y value 
+
+    icon_3_label.place(x=icon_3_x_centered, y=icon_3_y_centered) # Location of widget
+
+    # Temp
+    # Label text and icons and locations
+    temp_3_label = tk.Label(canvas, text=f"{mintemp[2]}˚    {maxtemp[2]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+
+    temp_3_width = temp_3_label.winfo_reqwidth() # Collects widget width
+    temp_3_height = temp_3_label.winfo_reqheight() # Collects widget height
+
+    temp_3_x_centered = temp3_x - temp_3_width/2 # Centers x value
+    temp_3_y_centered = temp3_y - temp_3_height/2 # Centers y value
+
+    temp_3_label.place(x=temp_3_x_centered, y=temp_3_y_centered)
+
+    ###########################
+
+    ########## DAY 4 ##########
+    
+    # Icon 
+    icon_4 = Image.open(icons[3]) # Opens .png file
+
+    # Resize image
+    icon_4_width = 65
+    icon_4_height = 65
+    icon_4 = icon_4.resize((icon_4_width, icon_4_height), Image.BICUBIC)
+
+    icon_4 = ImageTk.PhotoImage(icon_4) # Creates image
+
+    # Label text and icons and locations
+    icon_4_label = tk.Label(canvas, image=icon_4, bg="#1E1E1E")
+
+    icon_4_width = icon_4_label.winfo_reqwidth() # Collects widget width
+    icon_4_height = icon_4_label.winfo_reqheight() # Collects widget height
+
+    icon_4_x_centered = icon4_x - icon_4_width/2 # Centers x value
+    icon_4_y_centered = icon4_y - icon_4_height/2 # Centers y value 
+
+    icon_4_label.place(x=icon_4_x_centered, y=icon_4_y_centered) # Location of widget
+
+    # Temp
+    # Label text and icons and locations
+    temp_4_label = tk.Label(canvas, text=f"{mintemp[3]}˚    {maxtemp[3]}˚", font=("Inter", 60, "bold"), bg="#1E1E1E", fg="#FFFFFF")
+
+    temp_4_width = temp_4_label.winfo_reqwidth() # Collects widget width
+    temp_4_height = temp_4_label.winfo_reqheight() # Collects widget height
+
+    temp_4_x_centered = temp4_x - temp_4_width/2 # Centers x value
+    temp_4_y_centered = temp4_y - temp_4_height/2 # Centers y value
+
+    temp_4_label.place(x=temp_4_x_centered, y=temp_4_y_centered)
+
+    ###########################
+
+    # Update API Data
+
+    return icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label
+
+
+def update_forecast(canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label):
+
+    """
+    Function updates the API Data for weather() Function
+    """
+
+    # Call the API and get updated weather data
+    weather_data = request_forecast()
+
+    # Update the labels and icon with the new data
+    temp_1_label.config(text=f"{weather_data['forecast min temp'][0]}˚    {weather_data['forecast max temp'][0]}")
+    temp_2_label.config(text=f"{weather_data['forecast min temp'][1]}˚    {weather_data['forecast max temp'][1]}")
+    temp_3_label.config(text=f"{weather_data['forecast min temp'][2]}˚    {weather_data['forecast max temp'][2]}")
+    temp_4_label.config(text=f"{weather_data['forecast min temp'][3]}˚    {weather_data['forecast max temp'][3]}")
+
+    # Convert new weather code into icon DAY 1
+    icon_1_path = weather_icons(weather_data['weather'][0])
+    new_icon_1 = Image.open(icon_1_path)
+    new_icon_1 = new_icon_1.resize((65, 65), Image.BICUBIC)
+    new_icon_1 = ImageTk.PhotoImage(new_icon_1)
+
+    # Update the icon label with the new icon
+    icon_1_label.config(image=new_icon_1)
+    icon_1_label.image = new_icon_1  # Keep a reference to avoid garbage collection
+
+    # Convert new weather code into icon DAY 2
+    icon_2_path = weather_icons(weather_data['weather'][1])
+    new_icon_2 = Image.open(icon_2_path)
+    new_icon_2 = new_icon_2.resize((65, 65), Image.BICUBIC)
+    new_icon_2 = ImageTk.PhotoImage(new_icon_2)
+
+    # Update the icon label with the new icon 
+    icon_2_label.config(image=new_icon_2)
+    icon_2_label.image = new_icon_2  # Keep a reference to avoid garbage collection
+
+    # Convert new weather code into icon DAY 3
+    icon_3_path = weather_icons(weather_data['weather'][2])
+    new_icon_3 = Image.open(icon_3_path)
+    new_icon_3 = new_icon_3.resize((65, 65), Image.BICUBIC)
+    new_icon_3 = ImageTk.PhotoImage(new_icon_3)
+
+    # Update the icon label with the new icon
+    icon_3_label.config(image=new_icon_3)
+    icon_3_label.image = new_icon_3  # Keep a reference to avoid garbage collection
+
+    # Convert new weather code into icon DAY 4
+    icon_4_path = weather_icons(weather_data['weather'][3])
+    new_icon_4 = Image.open(icon_4_path)
+    new_icon_4 = new_icon_1.resize((65, 65), Image.BICUBIC)
+    new_icon_4 = ImageTk.PhotoImage(new_icon_4)
+
+    # Update the icon label with the new icon
+    icon_4_label.config(image=new_icon_4)
+    icon_4_label.image = new_icon_4  # Keep a reference to avoid garbage collection
+
+    # Return the updated labels and icon
+    return canvas.after(300000, update_weather, canvas, icon_1_label, icon_2_label, icon_3_label, icon_4_label, temp_1_label, temp_2_label, temp_3_label, temp_4_label)
 
