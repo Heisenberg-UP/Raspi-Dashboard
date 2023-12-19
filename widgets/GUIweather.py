@@ -13,7 +13,7 @@ def request_weather():
     """
 
     # API key
-    api_key = "Zv09qzYfSpbyDnZFZ2T9HYIEUQljZkNk"
+    api_key = "Your API Key"
 
     # Weather details
     location = "Mobile, AL, USA" # Location of weather
@@ -52,7 +52,7 @@ def request_forecast():
     """
 
     # API key
-    api_key = "Zv09qzYfSpbyDnZFZ2T9HYIEUQljZkNk"
+    api_key = "Your API Key"
 
     # Weather details
     location = "Mobile, AL, USA" # Location of weather
