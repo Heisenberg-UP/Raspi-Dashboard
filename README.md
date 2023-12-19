@@ -13,6 +13,8 @@ This application is intended for a 7inch 800x400 screen. The application is made
 
 Dashboard requires user to have Google account and Tomorrow.io account. Must use OAuth2.0 to pull user data from google calendar.
 
-All script is currently written in python.
-
-May automate install process using bash for easy deployment.
+Coming soon:
+- Calendar events displayed with event name
+- High resolution icons
+- Night time weather icons
+- deployable bash script... maybe
