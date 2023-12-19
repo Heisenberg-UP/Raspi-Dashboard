@@ -17,4 +17,4 @@ Coming soon:
 - Calendar events displayed with event name
 - High resolution icons
 - Night time weather icons
-- deployable bash script... maybe
+- Deployable bash script... maybe
