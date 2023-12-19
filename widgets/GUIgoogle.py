@@ -178,5 +178,74 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
     events4.place(x=events4_x_centered, y=events4_y_centered)
 
     # UPDATE FUNCTION
+    update_events(canvas, events1, events2, events3, events4)
 
     return events1, events2, events3, events4
+
+
+def update_events(canvas, events1, events2, events3, events4):
+
+    """
+    Function will update the events google calendar API call
+    """
+
+    # Call API
+    events = get_calendar()
+
+    # Set current date for organizing events based on days ahead of the current date
+    current_date = str(datetime.datetime.now().strftime('%Y-%m-%d'))
+
+    # Variables that contain the number of events for each
+    # Empty lists to append to through for loop
+    day_1 = []
+    day_2 = []
+    day_3 = []
+    day_4 = []
+
+    # For loop to assign event to days of the week from the API Call
+    for date in events:
+        if date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=1))[:10]:
+            day_1.append(date)
+        elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=2))[:10]:
+            day_2.append(date)
+        elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=3))[:10]:
+            day_3.append(date)
+        elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=4))[:10]:
+            day_4.append(date)
+        else:
+            return KeyError
+        
+    # Assign text configurations
+    # DAY 1
+    if len(day_1) == 1:
+        day_1_text = '1 EVENT'
+    else:
+        day_1_text = f'{len(day_1)} EVENTS'
+    
+    events1.config(text= day_1_text)
+
+    # DAY 2
+    if len(day_2) == 1:
+        day_2_text = '1 EVENT'
+    else:
+        day_2_text = f'{len(day_2)} EVENTS'
+    
+    events2.config(text= day_2_text)
+
+    # DAY 3
+    if len(day_3) == 1:
+        day_3_text = '1 EVENT'
+    else:
+        day_3_text = f'{len(day_3)} EVENTS'
+    
+    events3.config(text= day_3_text)
+
+    # DAY 4
+    if len(day_4) == 1:
+        day_4_text = '1 EVENT'
+    else:
+        day_4_text = f'{len(day_4)} EVENTS'
+    
+    events4.config(text= day_4_text)
+
+    return canvas.after(1000, update_events, canvas, events1, events2, events3, events4)
