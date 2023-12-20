@@ -32,12 +32,12 @@ def datetime_widget(canvas, x, y):
     datetime_label.place(x=x_centered, y=y_centered)
 
     # Update values
-    update_datetime_widget(datetime_label)
+    update_datetime_widget(datetime_label, x, y)
 
     return datetime_label
 
 
-def update_datetime_widget(datetime_label):
+def update_datetime_widget(datetime_label, x, y):
 
     """
     Function updates datetime widget every 60 seconds
@@ -52,8 +52,18 @@ def update_datetime_widget(datetime_label):
     # Update the label text
     datetime_label.config(text=formatted_datetime)
 
+    # Collects information about widget
+    width = datetime_label.winfo_reqwidth()
+    height = datetime_label.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    x_centered = x - width/2
+    y_centered = y - height/2
+
+    datetime_label.place(x=x_centered, y=y_centered)
+
     # Schedule the update_datetime function to run again after 1 second
-    return datetime_label.after(1000, update_datetime_widget, datetime_label) # I dont't understand how this works, however it works!
+    return datetime_label.after(1000, update_datetime_widget, datetime_label, x, y) # I dont't understand how this works, however it works!
 
 
 def days_widget(canvas, future_day, x, y):
@@ -103,12 +113,12 @@ def days_widget(canvas, future_day, x, y):
     day_label.place(x=x_centered, y=y_centered)
 
     # Update widget for current day
-    update_days_widget(day_label, future_day)
+    update_days_widget(day_label, future_day, x, y)
 
     return day_label
 
 
-def update_days_widget(day_label, future_day):
+def update_days_widget(day_label, future_day, x, y):
 
     """
     Function updates days widget every day
@@ -143,8 +153,18 @@ def update_days_widget(day_label, future_day):
     # Update the label text based on the desired day
     day_label.config(text=selected_day)
 
+    # Collects information about widget
+    width = day_label.winfo_reqwidth()
+    height = day_label.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    x_centered = x - width/2
+    y_centered = y - height/2
+
+    day_label.place(x=x_centered, y=y_centered)
+
     # Schedule the update_days_widget function to run again after 1 second
-    return day_label.after(1000, update_days_widget, day_label, future_day)
+    return day_label.after(1000, update_days_widget, day_label, future_day, x, y)
 
 
 def time_widget(canvas, future_time, x, y):
