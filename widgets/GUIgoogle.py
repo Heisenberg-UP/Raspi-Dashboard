@@ -85,7 +85,7 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
     """
     Function calls Google Calendar API and creates a widget of future events for the next 4 days
     """
-
+   
     # Call API
     events = get_calendar()
 
@@ -100,15 +100,15 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
     day_4 = []
 
     # For loop to assign event to days of the week from the API Call
-    for date in events:
+    for date, event_list in events.items():
         if date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=1))[:10]:
-            day_1.append(date)
+            day_1.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=2))[:10]:
-            day_2.append(date)
+            day_2.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=3))[:10]:
-            day_3.append(date)
+            day_3.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=4))[:10]:
-            day_4.append(date)
+            day_4.extend(event_list)
         else:
             return KeyError
         
@@ -178,12 +178,12 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
     events4.place(x=events4_x_centered, y=events4_y_centered)
 
     # UPDATE FUNCTION
-    update_events(canvas, events1, events2, events3, events4)
+    update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
 
     return events1, events2, events3, events4
+    
 
-
-def update_events(canvas, events1, events2, events3, events4):
+def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4):
 
     """
     Function will update the events google calendar API call
@@ -203,18 +203,18 @@ def update_events(canvas, events1, events2, events3, events4):
     day_4 = []
 
     # For loop to assign event to days of the week from the API Call
-    for date in events:
+    for date, event_list in events.items():
         if date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=1))[:10]:
-            day_1.append(date)
+            day_1.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=2))[:10]:
-            day_2.append(date)
+            day_2.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=3))[:10]:
-            day_3.append(date)
+            day_3.extend(event_list)
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=4))[:10]:
-            day_4.append(date)
+            day_4.extend(event_list)
         else:
             return KeyError
-        
+    
     # Assign text configurations
     # DAY 1
     if len(day_1) == 1:
@@ -224,6 +224,16 @@ def update_events(canvas, events1, events2, events3, events4):
     
     events1.config(text= day_1_text)
 
+    # Collects information about widget
+    events1_width = events1.winfo_reqwidth()
+    events1_height = events1.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    events1_x_centered = x1 - events1_width/2
+    events1_y_centered = y1 - events1_height/2
+
+    events1.place(x=events1_x_centered, y=events1_y_centered)
+
     # DAY 2
     if len(day_2) == 1:
         day_2_text = '1 EVENT'
@@ -231,6 +241,16 @@ def update_events(canvas, events1, events2, events3, events4):
         day_2_text = f'{len(day_2)} EVENTS'
     
     events2.config(text= day_2_text)
+
+    # Collects information about widget
+    events2_width = events2.winfo_reqwidth()
+    events2_height = events2.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    events2_x_centered = x2 - events2_width/2
+    events2_y_centered = y2 - events2_height/2
+
+    events2.place(x=events2_x_centered, y=events2_y_centered)
 
     # DAY 3
     if len(day_3) == 1:
@@ -240,6 +260,16 @@ def update_events(canvas, events1, events2, events3, events4):
     
     events3.config(text= day_3_text)
 
+    # Collects information about widget
+    events3_width = events3.winfo_reqwidth()
+    events3_height = events3.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    events3_x_centered = x3 - events3_width/2
+    events3_y_centered = y3 - events3_height/2
+
+    events3.place(x=events3_x_centered, y=events3_y_centered)
+
     # DAY 4
     if len(day_4) == 1:
         day_4_text = '1 EVENT'
@@ -248,4 +278,14 @@ def update_events(canvas, events1, events2, events3, events4):
     
     events4.config(text= day_4_text)
 
-    return canvas.after(1000, update_events, canvas, events1, events2, events3, events4)
+    # Collects information about widget
+    events4_width = events4.winfo_reqwidth()
+    events4_height = events4.winfo_reqheight()
+    
+    # Makes x and y values based on the center of the widget
+    events4_x_centered = x4 - events4_width/2
+    events4_y_centered = y4 - events4_height/2
+
+    events4.place(x=events4_x_centered, y=events4_y_centered)
+
+    return canvas.after(1000, update_events, canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
