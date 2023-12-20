@@ -3,7 +3,7 @@ Raspberry Pi Dashboard Application
 
 **CURRENT PROGRESS**
 
-![Screenshot 2023-12-18 at 10 30 58 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/83253116-43b5-481d-bc85-d4ba9be8543e)
+![Screenshot 2023-12-20 at 3 15 54 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/a8975537-1aaf-4cea-bae0-993a5c7b2cd3)
 
 This application is intended for a 7inch 800x400 screen. The application is made to be a desktop dashboard that updates:
 
