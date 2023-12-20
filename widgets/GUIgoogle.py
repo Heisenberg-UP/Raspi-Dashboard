@@ -125,9 +125,9 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
     # Create labels for widget
     # DAY 1
     if len(day_1) == 1:
-        events1 = tk.Label(canvas, text=f'{len(day_1)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_1 events
+        events1 = tk.Label(canvas, text=f'{len(day_1)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_1 events
     else:
-        events1 = tk.Label(canvas, text=f'{len(day_1)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_1 events
+        events1 = tk.Label(canvas, text=f'{len(day_1)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_1 events
 
     # Collects information about widget
     events1_width = events1.winfo_reqwidth()
@@ -141,9 +141,9 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 
     # DAY 2
     if len(day_2) == 1:
-        events2 = tk.Label(canvas, text=f'{len(day_2)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_2 events
+        events2 = tk.Label(canvas, text=f'{len(day_2)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_2 events
     else:
-        events2 = tk.Label(canvas, text=f'{len(day_2)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_2 events
+        events2 = tk.Label(canvas, text=f'{len(day_2)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_2 events
 
     # Collects information about widget
     events2_width = events2.winfo_reqwidth()
@@ -157,9 +157,9 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 
     # DAY 3
     if len(day_3) == 1:
-        events3 = tk.Label(canvas, text=f'{len(day_3)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_3 events
+        events3 = tk.Label(canvas, text=f'{len(day_3)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_3 events
     else:
-        events3 = tk.Label(canvas, text=f'{len(day_3)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_3 events
+        events3 = tk.Label(canvas, text=f'{len(day_3)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_3 events
 
     # Collects information about widget
     events3_width = events3.winfo_reqwidth()
@@ -173,9 +173,9 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 
     # DAY 4
     if len(day_4) == 1:
-        events4 = tk.Label(canvas, text=f'{len(day_4)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_3 events
+        events4 = tk.Label(canvas, text=f'{len(day_4)} EVENT', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_3 events
     else:
-        events4 = tk.Label(canvas, text=f'{len(day_4)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#FFFFFF") # Day_3 events
+        events4 = tk.Label(canvas, text=f'{len(day_4)} EVENTS', font=("Inter", 22, "bold"), bg="#1E1E1E", fg="#A9A9A9") # Day_3 events
 
     # Collects information about widget
     events4_width = events4.winfo_reqwidth()
