@@ -14,7 +14,7 @@ def authorize():
     """
     Function authorizes google calendar api use
     OAuth2 is used for google api as credentials.json and token.json
-    Token.json will eventuall expire and create a new one
+    Token.json will eventually expire and create a new one
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
@@ -31,14 +31,24 @@ def authorize():
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(credentials_file, SCOPES)
-            creds = flow.run_local_server(port=0)
+            try:
+                creds.refresh(Request())
+            except Exception as e:
+                print(f"Error refreshing token: {e}")
+                creds = None
+
+        if not creds:
+            try:
+                flow = InstalledAppFlow.from_client_secrets_file(credentials_file, SCOPES)
+                creds = flow.run_local_server(port=0)
+            except Exception as e:
+                print(f"Error running local server: {e}")
+                creds = None
 
         # Save the credentials for the next run
-        with open('/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/token.json', 'w') as token:
-            token.write(creds.to_json())
+        if creds:
+            with open('/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/token.json', 'w') as token:
+                token.write(creds.to_json())
 
     return creds
 
