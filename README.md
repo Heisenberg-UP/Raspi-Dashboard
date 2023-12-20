@@ -3,7 +3,7 @@ Raspberry Pi Dashboard Application
 
 **CURRENT PROGRESS**
 
-![Screenshot 2023-12-20 at 3 15 54 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/a8975537-1aaf-4cea-bae0-993a5c7b2cd3)
+![Screenshot 2023-12-20 at 4 03 34 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/4352f9d2-7dad-4e43-b5a8-d83334dd82fa)
 
 **DESIGN INSPIRATION**
 
