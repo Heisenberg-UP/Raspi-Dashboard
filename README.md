@@ -11,7 +11,7 @@ It is actually going to be cloudy all week, that is not a bug.
 
 ![Screenshot 2023-12-20 at 3 52 27 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/f981dd85-ee0d-4f5a-9bd2-6e8e132ceb1b)
 
-This application is intended for a 7inch 800x400 screen. The application is a desktop dashboard that updates:
+This application is intended for a 7inch 800x400 touchscreen. The application is a desktop dashboard that updates:
 
 - Date and time
 - Weather and forecast
