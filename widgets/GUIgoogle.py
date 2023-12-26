@@ -1,6 +1,7 @@
 # Imports
 import os.path 
 import datetime
+import random
 import tkinter as tk
 from collections import defaultdict
 from google.oauth2.credentials import Credentials
@@ -82,13 +83,14 @@ def get_calendar():
         
         # Parse date and time
         event_date = start.split('T')[0] # Extract date of the event
-        event_time = start.split('T')[1][:5]  # Extract HH:MM from the time
-    
+        event_stime = start.split('T')[1][:5]  # Extract HH:MM from the time
+        event_etime = end.split('T')[1][:5]
+
         # Add event information to the dictionary
-        events_dict[event_date].append({'start_time': event_time, 'end_time': end, 'summary': summary})
+        events_dict[event_date].append({'start_time': event_stime, 'end_time': event_etime, 'summary': summary})
 
     return events_dict
-
+ 
 
 def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 
@@ -98,6 +100,7 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
    
     # Call API
     events = get_calendar()
+    #print(events)
 
     # Set current date for organizing events based on days ahead of the current date
     current_date = str(datetime.datetime.now().strftime('%Y-%m-%d'))
@@ -301,6 +304,7 @@ def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, eve
     return canvas.after(1000, update_events, canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
 
 
+# NOTE: This function is just to get the work started for the google calendar widget
 def calendar(canvas):
 
     """
