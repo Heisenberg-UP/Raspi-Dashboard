@@ -123,7 +123,7 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=4))[:10]:
             day_4.extend(event_list)
         else:
-            return KeyError
+            pass
         
     # Create labels for widget
     # DAY 1
@@ -226,7 +226,7 @@ def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, eve
         elif date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d') + datetime.timedelta(days=4))[:10]:
             day_4.extend(event_list)
         else:
-            return KeyError
+            pass
     
     # Assign text configurations
     # DAY 1
