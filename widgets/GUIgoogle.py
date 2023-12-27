@@ -337,23 +337,17 @@ def calendar(canvas):
         shour, smin = map(int, event["start_time"].split(':')) # Separates hour and min in Start time of events
         ehour, emin = map(int, event["end_time"].split(':')) # Separates hour and min in End time of events
         if shour == int(datetime.datetime.now().strftime('%H')): # Current hour
-            # Pick between left and right spots for event
-            x = random.randint(0,1) 
-            if x == 1:
-                x = 353
-            else:
-                x = 503.5
+            # Pick x value
+            x = 353
             
             # Y value based on time event starts
             y = 10 + (smin * minute_height)
-        
-            color = random.choice(colors) # Randomly selects color for event
             
             # Build Rectangle box
-            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=color)
+            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[0])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF")
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[0], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
 
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -365,23 +359,17 @@ def calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
         if shour == (int(datetime.datetime.now().strftime('%H')) + 1): # Current hour + 1
-            # Pick between left and right spots for event
-            x = random.randint(0,1)
-            if x == 1:
-                x = 353
-            else:
-                x = 503.5
+            # Set x value
+            x = 503.5
 
             # Y value based on time event starts
             y = 105 + (smin * minute_height)
 
-            color = random.choice(colors) # Randomly selects color for event
-
             # Build Rectangle box
-            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=color)
+            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[1])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF")
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[1], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -393,23 +381,17 @@ def calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
         if shour == (int(datetime.datetime.now().strftime('%H')) + 2): # Current hour + 2
-            # Pick between left and right spots for event
-            x = random.randint(0,1)
-            if x == 1:
-                x = 353
-            else:
-                x = 503.5
+            # Set x value
+            x = 353
 
             # Y value based on time event starts
             y = 200 + (smin * minute_height)
 
-            color = random.choice(colors) # Randomly selects color for event
-
             # Build Rectangle box
-            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=color)
+            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[2])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF")
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[2], fg="#FFFFFF", wraplength=110, width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -421,12 +403,8 @@ def calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
         if shour == (int(datetime.datetime.now().strftime('%H')) + 3): # Current hour + 3 
-            # Pick between left and right spots for event
-            x = random.randint(0,1)
-            if x == 1:
-                x = 353
-            else:
-                x = 503.5
+            # Set x value
+            x = 503.5
 
             # Y value based on time event starts
             y = 295 + (smin * minute_height)
@@ -437,7 +415,7 @@ def calendar(canvas):
             canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=color)
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF")
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
