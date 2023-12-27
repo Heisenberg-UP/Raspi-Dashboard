@@ -5,6 +5,7 @@ Raspberry Pi Dashboard Application
 
 <img width="796" alt="Screenshot 2023-12-26 at 6 17 36 PM" src="https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/6e8209cb-5e87-4ec9-8a3c-cf9a77576dd7">
 
+
 **DESIGN INSPIRATION**
 
 ![Screenshot 2023-12-20 at 3 52 27 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/f981dd85-ee0d-4f5a-9bd2-6e8e132ceb1b)
