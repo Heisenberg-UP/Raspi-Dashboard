@@ -64,10 +64,11 @@ def dashboard_base():
 
     # Weather widgets
     wt.weather(canvas, 10, 73, 198, 85.5, 198, 112, 153.5, 112) # Creates widgets for realtime weather
-    wt.forecast(canvas, 71.25, 257.5, 71.25, 217.5, 193.75, 257.5, 193.75, 217.5, 71.25, 376.5, 71.25, 334.5, 193.75, 376.5, 193.75, 334.5)
+    wt.forecast(canvas, 71.25, 257.5, 71.25, 217.5, 193.75, 257.5, 193.75, 217.5, 71.25, 376.5, 71.25, 334.5, 193.75, 376.5, 193.75, 334.5) # Creates widgets for forecast weather
 
     # Calendar Widgets
-    gg.events(canvas, 727, 67.5, 727, 162.5, 727, 257.5, 727, 352.5)
+    gg.events(canvas, 727, 67.5, 727, 162.5, 727, 257.5, 727, 352.5) # Creates widget for future events
+    gg.calendar(canvas) # Create events for current calendar
     
     #############################
 
