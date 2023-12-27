@@ -18,7 +18,7 @@ This application is intended for a 7inch 800x400 touchscreen. The application is
 Dashboard requires user to have Google account and Tomorrow.io account. Must use OAuth2.0 to pull user data from google calendar and an API key to pull from Tomorrow.io.
 
 Coming soon:
-- Calendar events displayed with event name
+- Calendar update function
 - High resolution icons
 - Night time weather icons
 - Deployable bash script... maybe
