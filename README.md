@@ -3,9 +3,7 @@ Raspberry Pi Dashboard Application
 
 **CURRENT PROGRESS**
 
-![Screenshot 2023-12-20 at 4 03 34 PM](https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/4352f9d2-7dad-4e43-b5a8-d83334dd82fa)
-
-It is actually going to be cloudy all week, that is not a bug.
+<img width="796" alt="Screenshot 2023-12-26 at 6 17 36 PM" src="https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/6e8209cb-5e87-4ec9-8a3c-cf9a77576dd7">
 
 **DESIGN INSPIRATION**
 
