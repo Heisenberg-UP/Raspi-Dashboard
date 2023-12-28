@@ -19,15 +19,15 @@ def authorize():
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
-    credentials_file = '/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/client_secret.json'
+    credentials_file = '~/Raspi-Dashboard-0.1.1-alpha/credentials/client_secret.json'
 
     # OAuth 2.0 scopes for Google Calendar
     SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
     # Check if token file exists
     creds = None
-    if os.path.exists('/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/token.json'):
-        creds = Credentials.from_authorized_user_file('/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/token.json')
+    if os.path.exists('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json'):
+        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json')
 
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -48,7 +48,7 @@ def authorize():
 
         # Save the credentials for the next run
         if creds:
-            with open('/Users/keg-macbook/MontyPython/raspi-dashboard/credentials/token.json', 'w') as token:
+            with open('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json', 'w') as token:
                 token.write(creds.to_json())
 
     return creds
