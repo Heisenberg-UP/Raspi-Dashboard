@@ -19,15 +19,15 @@ def authorize():
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
-    credentials_file = '~/Raspi-Dashboard-0.1.1-alpha/credentials/client_secret.json'
+    credentials_file = '~/Raspi-Dashboard-0.1.2-alpha/credentials/client_secret.json'
 
     # OAuth 2.0 scopes for Google Calendar
     SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
     # Check if token file exists
     creds = None
-    if os.path.exists('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json'):
-        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json')
+    if os.path.exists('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json'):
+        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json')
 
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -48,7 +48,7 @@ def authorize():
 
         # Save the credentials for the next run
         if creds:
-            with open('~/Raspi-Dashboard-0.1.1-alpha/credentials/token.json', 'w') as token:
+            with open('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json', 'w') as token:
                 token.write(creds.to_json())
 
     return creds
@@ -304,7 +304,6 @@ def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, eve
     return canvas.after(1000, update_events, canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
 
 
-# NOTE: This function is just to get the work started for the google calendar widget
 def calendar(canvas):
 
     """
@@ -347,7 +346,8 @@ def calendar(canvas):
             canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[0])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[0], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[0], fg="#FFFFFF", wraplength=95,
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
 
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -358,7 +358,7 @@ def calendar(canvas):
             # Place label
             calendar.place(x=x_centered, y=y_centered)
 
-        if shour == (int(datetime.datetime.now().strftime('%H')) + 1): # Current hour + 1
+        elif shour == (int(datetime.datetime.now().strftime('%H')) + 1): # Current hour + 1
             # Set x value
             x = 503.5
 
@@ -369,7 +369,8 @@ def calendar(canvas):
             canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[1])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[1], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[1], fg="#FFFFFF", wraplength=95,
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -380,7 +381,7 @@ def calendar(canvas):
             # Place label
             calendar.place(x=x_centered, y=y_centered)
 
-        if shour == (int(datetime.datetime.now().strftime('%H')) + 2): # Current hour + 2
+        elif shour == (int(datetime.datetime.now().strftime('%H')) + 2): # Current hour + 2
             # Set x value
             x = 353
 
@@ -391,7 +392,8 @@ def calendar(canvas):
             canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[2])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[2], fg="#FFFFFF", wraplength=110, width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[2], fg="#FFFFFF", wraplength=95, 
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -402,20 +404,19 @@ def calendar(canvas):
             # Place label
             calendar.place(x=x_centered, y=y_centered)
 
-        if shour == (int(datetime.datetime.now().strftime('%H')) + 3): # Current hour + 3 
+        elif shour == (int(datetime.datetime.now().strftime('%H')) + 3): # Current hour + 3 
             # Set x value
             x = 503.5
 
             # Y value based on time event starts
             y = 295 + (smin * minute_height)
 
-            color = random.choice(colors) # Randomly selects color for event
-
             # Build Rectangle box
-            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=color)
+            canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[0])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=color, fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/140 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[0], fg="#FFFFFF", wraplength=95,
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -428,7 +429,7 @@ def calendar(canvas):
 
     # Update Function
     update_calendar(canvas)
-    
+
     return
 
 
@@ -475,7 +476,8 @@ def update_calendar(canvas):
             event_rect = canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[0])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[0], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[0], fg="#FFFFFF", wraplength=95,
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
 
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -500,7 +502,8 @@ def update_calendar(canvas):
             event_rect = canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[1])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[1], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[1], fg="#FFFFFF", wraplength=95, 
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -525,7 +528,8 @@ def update_calendar(canvas):
             event_rect = canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[2])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[2], fg="#FFFFFF", wraplength=110, width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[2], fg="#FFFFFF", wraplength=95, 
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -550,7 +554,8 @@ def update_calendar(canvas):
             event_rect = canvas.create_rectangle(x, y, (x + 140.5), (((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height)), fill=colors[0])
             
             # Create Label will summary of event
-            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 22, "bold"), bg=colors[0], fg="#FFFFFF", width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
+            calendar = tk.Label(canvas, text=f"{event['summary']}", font=("Inter", 18, "bold"), bg=colors[0], fg="#FFFFFF", wraplength=95, 
+                                width=round(7/140 * 140.5), height=round(5/200 * (((((abs(ehour - int(datetime.datetime.now().strftime('%H')))* hour_height) + 10) + (emin * minute_height))) - y)))
             
             # Center Label based on rectangular box size
             width = calendar.winfo_reqwidth()
@@ -563,11 +568,11 @@ def update_calendar(canvas):
 
             # Append values to list for update function
             calendar_event_id.extend([event_rect, calendar])
-
-    for i in range(len(calendar_events), len(calendar_event_id) // 2):
+    """
+    for i in range(len(calendar_event_id) // 2):
         event_rect_id = calendar_event_id[i * 2]
         event_label_id = calendar_event_id[i * 2 + 1]
         canvas.delete(event_rect_id)
         canvas.delete(event_label_id)
-
+    """
     return canvas.after(1000, update_calendar, canvas)
