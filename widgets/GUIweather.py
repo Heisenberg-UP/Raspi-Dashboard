@@ -16,7 +16,7 @@ def request_weather():
     api_key = "Your API Key"
 
     # Weather details
-    location = "Mobile, AL, USA" # Location of weather
+    location = "City, State, Country" # Location of weather if in United States
     units = "imperial" # Units of weather (I am ashamed I need imperial)
 
     # URL realtime api
@@ -55,7 +55,7 @@ def request_forecast():
     api_key = "Your API Key"
 
     # Weather details
-    location = "Mobile, AL, USA" # Location of weather
+    location = "City, State, Country" # Location of weather if in the United States
     timesteps = "1d" # Refresh interval
     units = "imperial" # Units of weather (I am ashamed I need imperial)
 
@@ -98,7 +98,7 @@ def weather_icons(weathercode):
     """
 
     # Weather icon path
-    image_path = "/Users/keg-macbook/MontyPython/raspi-dashboard/pictures/"
+    image_path = "~/Raspi-Dashboard-0.1.1-alpha/pictures/"
 
     # WeatherCode dictionary from Tomorrow.io
     weatherCode = {
