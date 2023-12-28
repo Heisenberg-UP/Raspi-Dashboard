@@ -3,7 +3,7 @@ Raspberry Pi Dashboard Application v0.1.2-alpha
 This application is intended for a 7inch 800x400 touchscreen. The application is a desktop dashboard that updates:
 - Date and time
 - Weather and forecast
-- Google Calendar
+- Google Calendar    
 Dashboard requires user to have Google account and Tomorrow.io account. Must use OAuth2.0 to pull user data from google calendar and an API key to pull from Tomorrow.io.
 
 **CURRENT PROGRESS**
