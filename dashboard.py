@@ -2,6 +2,7 @@
 import tkinter as tk
 from widgets import GUIdatetime as dt
 from widgets import GUIweather as wt
+from widgets import Guigoogle as gg
 
 
 # Functions
