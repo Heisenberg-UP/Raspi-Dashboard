@@ -19,14 +19,14 @@ def authorize():
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
-    credentials_file = '~/Raspi-Dashboard-0.1.2-alpha/credentials/client_secret.json'
+    credentials_file = '~/Raspi-Dashboard/credentials/client_secret.json'
 
     # OAuth 2.0 scopes for Google Calendar
     SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
     # Check if token file exists
     creds = None
-    if os.path.exists('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json'):
+    if os.path.exists('~/Raspi-Dashboard/credentials/token.json'):
         creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json')
 
     # If there are no (valid) credentials available, let the user log in.
@@ -48,7 +48,7 @@ def authorize():
 
         # Save the credentials for the next run
         if creds:
-            with open('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json', 'w') as token:
+            with open('~/Raspi-Dashboard/credentials/token.json', 'w') as token:
                 token.write(creds.to_json())
 
     return creds
@@ -447,7 +447,7 @@ def update_calendar(canvas):
 
     # Calendar list of events, empty to be appended into
     calendar_events = []
-    calendar_event_id = []
+    #calendar_event_id = [] #NOTE: This is being worked on for the update function
 
     # For loop to separate out events for current date
     for date, event_list in calendar.items():
@@ -489,7 +489,7 @@ def update_calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
             
             # Append values to list for update function
-            calendar_event_id.extend([event_rect, calendar])
+            #calendar_event_id.extend([event_rect, calendar]) #NOTE: This is being worked on for the update function
 
         elif shour == (int(datetime.datetime.now().strftime('%H')) + 1): # Current hour + 1
             # Set x value
@@ -515,7 +515,7 @@ def update_calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
             # Append values to list for update function
-            calendar_event_id.extend([event_rect, calendar])
+            #calendar_event_id.extend([event_rect, calendar]) #NOTE: This is being worked on for the update function
 
         elif shour == (int(datetime.datetime.now().strftime('%H')) + 2): # Current hour + 2
             # Set x value
@@ -541,7 +541,7 @@ def update_calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
             # Append values to list for update function
-            calendar_event_id.extend([event_rect, calendar])
+            #calendar_event_id.extend([event_rect, calendar]) #NOTE: This is being worked on for the update function
 
         elif shour == (int(datetime.datetime.now().strftime('%H')) + 3): # Current hour + 3 
             # Set x value
@@ -567,12 +567,6 @@ def update_calendar(canvas):
             calendar.place(x=x_centered, y=y_centered)
 
             # Append values to list for update function
-            calendar_event_id.extend([event_rect, calendar])
-    """
-    for i in range(len(calendar_event_id) // 2):
-        event_rect_id = calendar_event_id[i * 2]
-        event_label_id = calendar_event_id[i * 2 + 1]
-        canvas.delete(event_rect_id)
-        canvas.delete(event_label_id)
-    """
+            #calendar_event_id.extend([event_rect, calendar]) #NOTE: This is being worked on for the update function
+
     return canvas.after(1000, update_calendar, canvas)
