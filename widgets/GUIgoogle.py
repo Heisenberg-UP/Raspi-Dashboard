@@ -27,7 +27,7 @@ def authorize():
     # Check if token file exists
     creds = None
     if os.path.exists('~/Raspi-Dashboard/credentials/token.json'):
-        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard-0.1.2-alpha/credentials/token.json')
+        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard/credentials/token.json')
 
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
