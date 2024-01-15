@@ -98,7 +98,7 @@ def weather_icons(weathercode):
     """
 
     # Weather icon path
-    image_path = "~/Raspi-Dashboard-0.1.1-alpha/pictures/"
+    image_path = "~/Raspi-Dashboard/pictures/"
 
     # WeatherCode dictionary from Tomorrow.io
     weatherCode = {
