@@ -14,16 +14,12 @@ The dashboard application requires the user to have a Google account and a Tomor
 
 **Installation Guide:**
 
-' ' 'bash
-
+```bash
 git clone https://github.com/Heisenberg-UP/Raspi-Dashboard.git
-
 cd Raspi-Dashboard
-
 python3 -m venv env
-
 pip install requirements.txt
-' ' '
+```
 
 Coming soon:
 - Calendar update function
