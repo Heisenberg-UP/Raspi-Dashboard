@@ -19,15 +19,15 @@ def authorize():
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
-    credentials_file = '~/Raspi-Dashboard/credentials/client_secret.json'
+    credentials_file = '~/Raspi-Dashboard/credentials/client_secret.json' # Change to accruate directory path, do not change .json file name
 
     # OAuth 2.0 scopes for Google Calendar
     SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
     # Check if token file exists
     creds = None
-    if os.path.exists('~/Raspi-Dashboard/credentials/token.json'):
-        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard/credentials/token.json')
+    if os.path.exists('~/Raspi-Dashboard/credentials/token.json'): # Change to accruate directory path, do not change .json file name
+        creds = Credentials.from_authorized_user_file('~/Raspi-Dashboard/credentials/token.json') # Change to accruate directory path, do not change .json file name
 
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -48,7 +48,7 @@ def authorize():
 
         # Save the credentials for the next run
         if creds:
-            with open('~/Raspi-Dashboard/credentials/token.json', 'w') as token:
+            with open('~/Raspi-Dashboard/credentials/token.json', 'w') as token: # Change to accruate directory path, do not change .json file name
                 token.write(creds.to_json())
 
     return creds
