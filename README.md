@@ -5,7 +5,7 @@ This application is intended for a 7inch 800x400 touchscreen. The application is
 - Weather and forecast
 - Google Calendar
 
-This product is currently unfinished, and I am by no means a certified programmer. The product is quite janky and needs a lot of love. However, the application is functional... except the calendar portion is currently lacking an update feature. I plan on making the application more flush once after I finish the foundation.
+This product is currently unfinished, and I am by no means a certified programmer. The product is quite janky and needs a lot of love. However, the application is functional... except the calendar portion is currently lacking an update feature. I plan on making the application more flush after I finish the foundation of the software.
 
 Coming soon:
 - Calendar update function
