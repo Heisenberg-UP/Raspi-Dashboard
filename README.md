@@ -20,31 +20,31 @@ Coming soon:
 **Installation Guide:**
 
 1. Clone the repository.
-```bash
-git clone https://github.com/Heisenberg-UP/Raspi-Dashboard.git
-```
+   ```bash
+   git clone https://github.com/Heisenberg-UP/Raspi-Dashboard.git
+   ```
 
 2. Move into the repository folder.
-```bash
-cd Raspi-Dashboard
-```
+   ```bash
+   cd Raspi-Dashboard
+   ```
 
 3. Create a virtual python environment.
-```bash
-python3 -m venv env
-```
+   ```bash
+   python3 -m venv env
+   ```
 
 4. Install dependencies through pip.
-```bash
-pip install requirements.txt
-```
+   ```bash
+   pip install requirements.txt
+   ```
 
 5. Go to Tomorrow.io, create an account and obtain an API key, then copy and paste your API key into the <api_key> variable in the widgets/GUIweather.py file on lines 16 and 55.
 
 6. In the widgets/GUIweather.py file change the <location> variable on lines 19 and 58 to the desired city, state, and country. Additionally, you can change the <units> variable to "metric" if desired.
 
 7. Go to https://console.cloud.google.com and make an account. Create and open a project called Google Calendar API, then navigate to the credentials tab. Follow the instructions to make an OAuth 2.0 Client ID. Download the .json file and run the following command from your downloads folder:
-```bash
-cp *.json ~/Raspi-Dashboard/credentials/client_secret.json
-```
-Otherwise, copy the contents of your newly downloaded .json file and paste it into the credentials/client_secret.json file.
+   ```bash
+   cp *.json ~/Raspi-Dashboard/credentials/client_secret.json
+   ```
+   Otherwise, copy the contents of your newly downloaded .json file and paste it into the credentials/client_secret.json file.
