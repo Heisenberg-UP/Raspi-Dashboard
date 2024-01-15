@@ -18,6 +18,7 @@ Coming soon:
 <img width="792" alt="Screenshot 2023-12-27 at 6 51 50 PM" src="https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/789649ef-d56b-475a-aec4-593d8bdf3dd4">  
 
 
+
 **Installation Guide:**
 
 1. Clone the repository.
