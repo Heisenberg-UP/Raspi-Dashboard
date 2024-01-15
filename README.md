@@ -1,5 +1,5 @@
 # Raspi-Dashboard
-Raspberry Pi Dashboard Application v0.1.2-alpha  
+**Raspberry Pi Dashboard Application v0.1.2-alpha**
 This application is intended for a 7inch 800x400 touchscreen. The application is a desktop dashboard that updates:
 - Date and time
 - Weather and forecast
@@ -13,9 +13,10 @@ Coming soon:
 - Night time weather icons
 - Deployable bash script
 
-**CURRENT PROGRESS**
+**Current Progress:**
 
 <img width="792" alt="Screenshot 2023-12-27 at 6 51 50 PM" src="https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/789649ef-d56b-475a-aec4-593d8bdf3dd4">  
+
 
 **Installation Guide:**
 
