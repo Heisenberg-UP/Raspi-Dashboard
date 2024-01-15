@@ -13,10 +13,10 @@ def request_weather():
     """
 
     # API key
-    api_key = "Your API Key"
+    api_key = "Your API Key" # Change to actual API Key
 
     # Weather details
-    location = "City, State, Country" # Location of weather if in United States
+    location = "City, State, Country" # Location of weather if in United States,
     units = "imperial" # Units of weather (I am ashamed I need imperial)
 
     # URL realtime api
@@ -52,7 +52,7 @@ def request_forecast():
     """
 
     # API key
-    api_key = "Your API Key"
+    api_key = "Your API Key" # Change to actual API Key
 
     # Weather details
     location = "City, State, Country" # Location of weather if in the United States
@@ -98,7 +98,7 @@ def weather_icons(weathercode):
     """
 
     # Weather icon path
-    image_path = "~/Raspi-Dashboard/pictures/"
+    image_path = "~/Raspi-Dashboard/pictures/" # Change to actual directory path leading to pictures folder
 
     # WeatherCode dictionary from Tomorrow.io
     weatherCode = {
