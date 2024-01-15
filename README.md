@@ -40,7 +40,7 @@ Coming soon:
    pip install -r requirements.txt
    ```
 
-5. Go to Tomorrow.io, create an account and obtain an API key, then copy and paste your API key into the <api_key> variable in the widgets/GUIweather.py file on lines 16 and 55.
+5. Go to [Tomorrow.io](https://www.tomorrow.io/), create an account and obtain an API key, then copy and paste your API key into the <api_key> variable in the widgets/GUIweather.py file on lines 16 and 55.
 
 6. In the widgets/GUIweather.py file change the <location> variable on lines 19 and 58 to the desired city, state, and country. Additionally, you can change the <units> variable to "metric" if desired.
 
