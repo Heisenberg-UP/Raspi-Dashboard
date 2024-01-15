@@ -33,6 +33,7 @@ Coming soon:
 3. Create a virtual python environment.
    ```bash
    python3 -m venv env
+   source env/bin/activate
    ```
 
 4. Install dependencies through pip.
@@ -76,6 +77,5 @@ Coming soon:
 
 12. Run the following commands from within the Raspi-Dashboard folder.
     ```bash
-    source env/bin/activate
     python3 dashboard.py
     ```
