@@ -58,18 +58,24 @@ Coming soon:
 
 10. Go to the widgets/GUIgoogle.py, on lines 22, 29, 30, and 51 change the directory paths to reflect your full directory path to the credential folder.
 
-   Example on line 22:
-   ```python3
-   credentials_file = '/Users/keg-macbook/MontyPython/Raspi-Dashboard/credentials/client_secret.json'
-   ```
-   Example on line 29:
-   ```python3
-   if os.path.exists('/Users/keg-macbook/MontyPython/raspi-dashboard-OG/credentials/token.json'):
-   ```
-   It is important to not change the file the directory path is leading to, so do not change the name of .json file you see, just the path leading to said file.
+    Example on line 22:
+    ```python3
+    credentials_file = '/Users/keg-macbook/MontyPython/Raspi-Dashboard/credentials/client_secret.json'
+    ```
+    Example on line 29:
+    ```python3
+    if os.path.exists('/Users/keg-macbook/MontyPython/raspi-dashboard-OG/credentials/token.json'):
+    ```
+    It is important to not change the file the directory path is leading to, so do not change the name of .json file you see, just the path leading to said file.
 
 11. Go to https://console.cloud.google.com and make an account. Create and open a project called Google Calendar API, then navigate to the credentials tab. Follow the instructions to make an OAuth 2.0 Client ID. Download the .json file and run the following command from your downloads folder:
-   ```bash
-   cp *.json ~/Raspi-Dashboard/credentials/client_secret.json
-   ```
-   Otherwise, copy the contents of your newly downloaded .json file and paste it into the credentials/client_secret.json file.
+    ```bash
+    cp *.json ~/Raspi-Dashboard/credentials/client_secret.json
+    ```
+    Otherwise, copy the contents of your newly downloaded .json file and paste it into the credentials/client_secret.json file.
+
+12. Run the following commands from within the Raspi-Dashboard folder.
+    ```bash
+    source env/bin/activate
+    python3 dashboard.py
+    ```
