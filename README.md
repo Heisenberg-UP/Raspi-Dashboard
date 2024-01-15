@@ -47,6 +47,7 @@ Coming soon:
 7. Again, in the widgets/GUIweather.py file go to line 102 and change the <image_path> variable to the accurate file path to the pictures foler.
 
 8. Go to the widgets/GUIgoogle.py, on lines 22, 29, 30, and 51 change the directory paths to reflect your full directory path to the credential folder.
+
    Example on line 22:
    ```python3
    credentials_file = '/Users/keg-macbook/MontyPython/Raspi-Dashboard/credentials/client_secret.json'
