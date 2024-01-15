@@ -18,11 +18,6 @@ Coming soon:
 <img width="792" alt="Screenshot 2023-12-27 at 6 51 50 PM" src="https://github.com/Heisenberg-UP/Raspi-Dashboard/assets/99283516/789649ef-d56b-475a-aec4-593d8bdf3dd4">  
 
 
-
-
-
-
-
 **Installation Guide:**
 
 1. Clone the repository.
@@ -42,7 +37,7 @@ Coming soon:
 
 4. Install dependencies through pip.
    ```bash
-   pip install requirements.txt
+   pip install -r requirements.txt
    ```
 
 5. Go to Tomorrow.io, create an account and obtain an API key, then copy and paste your API key into the <api_key> variable in the widgets/GUIweather.py file on lines 16 and 55.
