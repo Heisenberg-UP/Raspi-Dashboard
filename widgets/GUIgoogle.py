@@ -13,9 +13,9 @@ from googleapiclient.discovery import build
 def authorize():
 
     """
-    Function authorizes google calendar api use
-    OAuth2 is used for google api as credentials.json and token.json
-    Token.json will eventually expire and create a new one
+    Function authorizes Google Calendar API use.
+    OAuth2 is used for Google API as credentials.json and token.json.
+    Token.json will eventually expire and create a new one.
     """
 
     # Your API credentials file (downloaded from the Cloud Console)
@@ -55,6 +55,11 @@ def authorize():
 
 
 def get_calendar():
+
+    """
+    Function pulls Google Calendar API.
+    API data is spliced and compiled into a dictionary for other functions to sift through.
+    """
     # Authorize the user
     credentials = authorize()
 
@@ -95,7 +100,7 @@ def get_calendar():
 def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 
     """
-    Function calls Google Calendar API and creates a widget of future events for the next 4 days
+    Function calls Google Calendar API and creates a widget of future events for the next 4 days.
     """
    
     # Call API
@@ -199,7 +204,7 @@ def events(canvas, x1, y1, x2, y2, x3, y3, x4, y4):
 def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4):
 
     """
-    Function will update the events google calendar API call
+    Function will update the events google calendar API call.
     """
 
     # Call API
@@ -301,7 +306,7 @@ def update_events(canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, eve
 
     events4.place(x=events4_x_centered, y=events4_y_centered)
 
-    return canvas.after(1000, update_events, canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
+    return canvas.after(10000, update_events, canvas, events1, x1, y1, events2, x2, y2, events3, x3, y3, events4, x4, y4)
 
 
 def calendar(canvas):
@@ -311,7 +316,7 @@ def calendar(canvas):
     """
 
     # Call API
-    calendar = get_calendar()
+    calendar_api = get_calendar()
 
     # Set current date for organizing events based on days ahead of the current date
     current_date = str(datetime.datetime.now().strftime('%Y-%m-%d'))
@@ -320,7 +325,7 @@ def calendar(canvas):
     calendar_events = []
 
     # For loop to separate out events for current date
-    for date, event_list in calendar.items():
+    for date, event_list in calendar_api.items():
         if date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d'))[:10]:
             calendar_events.extend(event_list)
     
@@ -436,11 +441,11 @@ def calendar(canvas):
 def update_calendar(canvas):
 
     """
-    Function updates google calendar by calling API again
+    Function updates google calendar by calling API again.
     """
 
     # Call API
-    calendar = get_calendar()
+    calendar_api = get_calendar()
 
     # Set current date for organizing events based on days ahead of the current date
     current_date = str(datetime.datetime.now().strftime('%Y-%m-%d'))
@@ -450,7 +455,7 @@ def update_calendar(canvas):
     #calendar_event_id = [] #NOTE: This is being worked on for the update function
 
     # For loop to separate out events for current date
-    for date, event_list in calendar.items():
+    for date, event_list in calendar_api.items():
         if date == str(datetime.datetime.strptime(current_date, '%Y-%m-%d'))[:10]:
             calendar_events.extend(event_list)
     
