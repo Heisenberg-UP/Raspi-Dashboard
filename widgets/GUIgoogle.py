@@ -1,7 +1,6 @@
 # Imports
 import os.path 
 import datetime
-import random
 import tkinter as tk
 from collections import defaultdict
 from google.oauth2.credentials import Credentials
